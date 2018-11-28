@@ -184,15 +184,15 @@ public class LivreurDAO {
     }
 
 // --------------------------------------------------------------------------
-// Liste des contacts pour un secteur donne
+// Liste des livreurs pour un secteur donne
 // --------------------------------------------------------------------------
-/*    public Vector<Contact> lireListe(Secteur secteur) throws SQLException
+    public Vector<Livreur> lireListe(Secteur secteur) throws SQLException
     {
-        Vector<Contact> listeContacts;
-        Contact contact;
+        Vector<Livreur> listeLivreurs;
+        Livreur livreur;
 
         String select = "SELECT * FROM CONTACT WHERE CODE_SECTEUR = ";
-        select += secteur.getCode();
+        select += secteur.getNumeroSecteur();
 
         int nombreDeContacts;
         Vector<Object> ligne;
@@ -200,28 +200,30 @@ public class LivreurDAO {
 
         jeuResultat = accesBase.executeQuery(select);
 
-        listeContacts = new Vector<Contact>();
+        listeLivreurs = new Vector<Livreur>();
         nombreDeContacts = (jeuResultat.getLignes()).size();
 
         for (i = 0; i < nombreDeContacts; i++)
         {
             ligne = (jeuResultat.getLignes()).elementAt(i);
 
-            contact = new Contact();
-            contact.setNumero((Integer) ligne.elementAt(0));
-            contact.setNom((String) ligne.elementAt(1));
-            contact.setAdresse((String) ligne.elementAt(2));
-            contact.setCodePostal((String) ligne.elementAt(3));
-            contact.setVille((String) ligne.elementAt(4));
-            contact.setCodeSecteur((Integer) ligne.elementAt(5));
+            livreur = new Livreur();
+            livreur.setIdLivreur((Integer) ligne.elementAt(1));
+            livreur.setNomLivreur((String) ligne.elementAt(2));
+            livreur.setPrenomLivreur((String) ligne.elementAt(3));
+            livreur.setNumPermisLivreur((Integer) ligne.elementAt(4));
+            livreur.setAdresseLivreur((String) ligne.elementAt(5));
+            livreur.setCodePostalLivreur((Integer) ligne.elementAt(6));
+            livreur.setVilleLivreur((String) ligne.elementAt(7));
+            livreur.setNumeroSecteur((Integer) ligne.elementAt(8));
 
-            contact.setSecteur(secteur);
-            listeContacts.addElement(contact);
+            livreur.setSecteur(secteur);
+            listeLivreurs.addElement(livreur);
         }
 
-        return listeContacts;
+        return listeLivreurs;
     }
-*/
+
     
 // --------------------------------------------------------------------------
 // Liste des contacts
@@ -264,7 +266,7 @@ public class LivreurDAO {
 // --------------------------------------------------------------------------
 // Liste des colonnes de la table CONTACT
 // --------------------------------------------------------------------------
-    public Vector<Colonne> getListeColonne()
+    public Vector<Colonne> getListeColonnes()
     {
         return jeuResultat.getColonnes();
     }

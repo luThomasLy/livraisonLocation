@@ -1,29 +1,44 @@
 package gestionLivraisonLocation;
 
 // ==========================================================================
-// ServletControleur.java : servlet d'accueil du projet gestionContactMVC2
+// ServletControleur.java : servlet d'accueil du projet locationLivraison
 // ==========================================================================
-
+import classesMetiers.Livreur;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import jdbc.BaseDeDonnees;
 
 public class ServletControleur extends HttpServlet
 {
     private TraitementAccueil traitementAccueil;
     private TraitementModif traitementModif;
-    private PriseServeur priseServeur;
+    private BaseDeDonnees base;
 
     @Override
     public void init()
     {
-        //priseServeur = new PriseServeur("localhost", 8189);
-        priseServeur = 
-                new PriseServeur("localhost", 8080);
-        priseServeur.setFormatDate(getInitParameter("formatDateSqlServer"));
+        String url = "jdbc:mysql://localhost/locationLivraison";
+        String login ="root";
+        String password = "";    
+        Livreur livreur;      
+       
+        try
+        {
+            //Class.forName(getInitParameter("driverJDBCSqlServer"));
+            Class.forName("com.mysql.jdbc.Driver");
+        }
+        catch (ClassNotFoundException e)
+        {
+        }
 
-        traitementAccueil = new TraitementAccueil(priseServeur);
-        traitementModif = new TraitementModif(priseServeur);
+        //base = new BaseDeDonnees(getInitParameter("BDDSqlServer"));
+        base = new BaseDeDonnees(url,login,password);
+        //base.setFormatDate(getInitParameter("formatDateSqlServer"));
+        base.setFormatDate("yyyy/MM/dd");
+
+        traitementAccueil = new TraitementAccueil(base);
+        traitementModif = new TraitementModif(base);
     }
 
 // --------------------------------------------------------------------------

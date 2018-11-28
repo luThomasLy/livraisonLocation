@@ -25,6 +25,7 @@ public class Livreur implements java.io.Serializable {
 // et à la table Secteur 1,1    
 // --------------------------------------------------------------------------
     private Secteur secteur;
+    
     private Vector<Recupere> listeRecupere; //relation à créer
     private Vector<Livre> listeLivre; //relation à créer
     
@@ -76,7 +77,20 @@ public class Livreur implements java.io.Serializable {
     public void setNumeroSecteur(Integer numeroSecteur) {
         this.numeroSecteur = numeroSecteur;
     }
-    
+
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
+
+        if (secteur != null)
+        {
+            this.numeroSecteur = secteur.getNumeroSecteur();
+        }
+        else
+        {
+            this.numeroSecteur = null;
+        }
+    }
+
     //les listes des associations
 
     public void setListeRecupere(Vector<Recupere> listeRecupere) {
@@ -124,6 +138,10 @@ public class Livreur implements java.io.Serializable {
 
     public Integer getNumeroSecteur() {
         return numeroSecteur;
+    }
+
+    public Secteur getSecteur() {
+        return secteur;
     }
     
     //les listes des associations

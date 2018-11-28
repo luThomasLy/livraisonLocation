@@ -1,22 +1,25 @@
 package gestionLivraisonLocation;
 
-import daoServeurObjets.*;
-import java.io.IOException;
+import classesMetiers.Livreur;
+import classesMetiers.Secteur;
+import daoJdbcMapping.*;
+import java.sql.SQLException;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import metierMapping.*;
+import jdbc.AccesBase;
+import jdbc.BaseDeDonnees;
 
 public class TraitementModif
 {
-    private PriseServeur priseServeur;
+    private BaseDeDonnees base;
 
 // --------------------------------------------------------------------------
 // Constructeur
 // --------------------------------------------------------------------------
-    public TraitementModif(PriseServeur priseServeur)
+    public TraitementModif(BaseDeDonnees base)
     {
-        this.priseServeur = priseServeur;
+        this.base = base;
     }
 
 // --------------------------------------------------------------------------
@@ -26,122 +29,157 @@ public class TraitementModif
     {
         String jspRetour;
 
-        Contact contact;
+        Livreur livreur;
         HttpSession session = request.getSession();
 
-        contact = (Contact) session.getAttribute("contact");
+        livreur = (Livreur) session.getAttribute("livreur");
 
         jspRetour = "/jspAccueil.jsp";
         session.setAttribute("message", "Modification annulée");
-        session.setAttribute("numeroContact", contact.getNumero().toString());
+        //session.setAttribute("numeroContact", contact.getNumero().toString());
+        session.setAttribute("numeroLivreur",livreur.getIdLivreur().toString());
         session.setAttribute("choixAction", "modification");
+
         return jspRetour;
     }
 
 // --------------------------------------------------------------------------
-// Traitement d'enregistrement de la modification et affichage de l'ecran de
-// confirmation de la modification
+// Enregistrement de la modification et affichage de l'ecran de confirmation
+// de la modification
 // --------------------------------------------------------------------------
     public String enregModif(HttpServletRequest request)
     {
         String jspRetour;
-        Contact contact;
+
+        Livreur livreur;
+        Vector<Secteur> vSect;
+
         HttpSession session = request.getSession();
-        AccesServeur accesServeur = new AccesServeur(priseServeur);
+        
+        AccesBase accesBase;
+        LivreurDAO livreurDAO;
 
-        ContactDAO contactDAO;
+        livreur = (Livreur) session.getAttribute("livreur");
+        vSect = (Vector<Secteur>) session.getAttribute("vSect");
 
-        contact = (Contact) session.getAttribute("contact");
-
-        String nom = request.getParameter("nom");
-        if (nom.compareTo("") == 0)
+        String idLvreur = request.getParameter("idLvreur");
+        idLvreur = idLvreur.trim();
+        if (idLvreur.compareTo("") == 0)
         {
-            nom = null;
+            idLvreur = null;
         }
 
-        String adresse = request.getParameter("adresse");
-        if (adresse.compareTo("") == 0)
+        String nomLivreur = request.getParameter("nomLivreur");
+        nomLivreur = nomLivreur.trim();
+        if (nomLivreur.compareTo("") == 0)
         {
-            adresse = null;
+            nomLivreur = null;
+        }
+        
+        String prenomLivreur = request.getParameter("prenomLivreur");
+        prenomLivreur = prenomLivreur.trim();
+        if (prenomLivreur.compareTo("") == 0)
+        {
+            prenomLivreur = null;
+        }
+        
+        String numPermisLivreur = request.getParameter("numPermisLivreur");
+        numPermisLivreur = numPermisLivreur.trim();
+        if (numPermisLivreur.compareTo("") == 0)
+        {
+            numPermisLivreur = null;
+        }
+        
+        String adresseLivreur = request.getParameter("adresseLivreur");
+        adresseLivreur = adresseLivreur.trim();
+        if (adresseLivreur.compareTo("") == 0)
+        {
+            adresseLivreur = null;
         }
 
-        String codePostal = request.getParameter("codePostal");
-        if (codePostal.compareTo("") == 0)
+//        String codePostalLivreur = request.getParameter("codePostalLivreur");
+//        codePostalLivreur = codePostalLivreur.trim();
+//        if (codePostalLivreur.compareTo("") == 0)
+//        {
+//            codePostalLivreur = null;
+//        }
+        
+        String villeLivreur = request.getParameter("villeLivreur");
+        villeLivreur = villeLivreur.trim();
+        if (villeLivreur.compareTo("") == 0)
         {
-            codePostal = null;
+            villeLivreur = null;
+        }
+        
+        
+        String stringIdLivreur = request.getParameter("idLivreur");
+        Integer idLivreur = null;
+        if (stringIdLivreur.compareTo("") != 0)
+        {
+            idLivreur = new Integer(stringIdLivreur);
+        }
+        
+        String stringCodePostalSecteur = request.getParameter("codePostalLivreur");
+        Integer codePostalLivreur = null;
+        if (stringCodePostalSecteur.compareTo("") != 0)
+        {
+            codePostalLivreur = new Integer(stringCodePostalSecteur);
         }
 
-        String ville = request.getParameter("ville");
-        if (ville.compareTo("") == 0)
+        String stringNumeroSecteur = request.getParameter("numeroSecteur");
+        Integer numeroSecteur = null;
+        if (stringNumeroSecteur.compareTo("") != 0)
         {
-            ville = null;
-        }
-
-        String stringCodeSecteur = request.getParameter("codeSecteur");
-        Integer codeSecteur = null;
-        if (stringCodeSecteur.compareTo("") != 0)
-        {
-            codeSecteur = new Integer(stringCodeSecteur);
+            numeroSecteur = new Integer(stringNumeroSecteur);
         }
 
 // --------------------------------------------------------------------------
-// Modification de l'objet contact
+// Modification de l'objet livreur
 // --------------------------------------------------------------------------
-        contact.setNom(nom);
-        contact.setAdresse(adresse);
-        contact.setCodePostal(codePostal);
-        contact.setVille(ville);
-        contact.setCodeSecteur(codeSecteur);
+        
+        livreur.setIdLivreur(idLivreur);
+        livreur.setNomLivreur(nomLivreur);
+        livreur.setAdresseLivreur(adresseLivreur);
+        livreur.setCodePostalLivreur(codePostalLivreur);
+        livreur.setVilleLivreur(villeLivreur);
+        livreur.setNumeroSecteur(numeroSecteur);
+
+        accesBase = new AccesBase(base);
 
         try
         {
-            accesServeur.getConnection();
-            contactDAO = new ContactDAO(accesServeur);
+            accesBase.getConnection();
+            livreurDAO = new LivreurDAO(accesBase);
 
             try
             {
-                int retour = contactDAO.modifier(contact);
+                int retour = livreurDAO.modifier(livreur);
                 if (retour != 0)
                 {
                     jspRetour = "/jspRecap.jsp";
-                    session.setAttribute("contact", contact);
+                    session.setAttribute("livreur", livreur);
                 }
                 else
                 {
                     jspRetour = "/jspModif.jsp";
-
-                    Vector<Secteur> vSect =
-                        (Vector<Secteur>) session.getAttribute("vSect");
-                    session.setAttribute("contact", contact);
+                    session.setAttribute("message", "Le contact "
+                                         + livreur.getIdLivreur()
+                                         + " a été supprimé");
+                    session.setAttribute("livreur", livreur);
                     session.setAttribute("vSect", vSect);
-                    session.setAttribute("message", "Contact supprimé");
                 }
-            }
-            catch (ClassNotFoundException | IOException e)
-            {
-                jspRetour = "/jspModif.jsp";
-
-                Vector<Secteur> vSect =
-                    (Vector<Secteur>) session.getAttribute("vSect");
-                session.setAttribute("contact", contact);
-                session.setAttribute("vSect", vSect);
-                session.setAttribute("message", "Erreur : " + e.getMessage());
             }
             finally
             {
-                accesServeur.closeConnection();
+                accesBase.closeConnection();
             }
         }
-        catch (IOException e)
+        catch (SQLException e)
         {
             jspRetour = "/jspModif.jsp";
-
-            Vector<Secteur> vSect =
-                (Vector<Secteur>) session.getAttribute("vSect");
-            session.setAttribute("contact", contact);
+            session.setAttribute("message", e.getMessage());
+            session.setAttribute("livreur", livreur);
             session.setAttribute("vSect", vSect);
-            session.setAttribute("message", 
-                                 "Erreur : Serveur Objets indisponible");
         }
 
         return jspRetour;
