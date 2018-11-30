@@ -47,7 +47,7 @@ public class LivreurDAO {
         String select;
         Vector<Object> ligne;
 
-        select = "SELECT * FROM LIVREUR WHERE NUMERO = " + livreur.getIdLivreur();
+        select = "SELECT * FROM LIVREUR WHERE IDLIVREUR = " + livreur.getIdLivreur();
 
         jeuResultat = accesBase.executeQuery(select);
 
@@ -75,7 +75,7 @@ public class LivreurDAO {
             if (rowCount == 0)
             {
                 throw new SQLException(
-                    "Contact " + livreur.getIdLivreur()+ " inconnu");
+                    "Livreur " + livreur.getIdLivreur()+ " inconnu");
             }
             else
             {
@@ -169,7 +169,7 @@ public class LivreurDAO {
 // --------------------------------------------------------------------------
 // Lecture d'un Livreur, pour un Secteur donne
 // --------------------------------------------------------------------------
-    public Livreur lireContact(Secteur secteur) throws SQLException
+    public Livreur lireLivreur(Secteur secteur) throws SQLException
     {
         Livreur livreur = null;
 
@@ -177,7 +177,7 @@ public class LivreurDAO {
         {
             livreur = new Livreur();
             //contact.setNumero(versement.getNumeroContact());
-            livreur.setIdLivreur(secteur.setNumeroSecteur());
+            livreur.setIdLivreur(secteur.getNumeroSecteur());
             lire(livreur);
         }
         return livreur;
@@ -191,19 +191,19 @@ public class LivreurDAO {
         Vector<Livreur> listeLivreurs;
         Livreur livreur;
 
-        String select = "SELECT * FROM CONTACT WHERE CODE_SECTEUR = ";
+        String select = "SELECT * FROM LIVREUR WHERE NUMEROSECTEUR = ";
         select += secteur.getNumeroSecteur();
 
-        int nombreDeContacts;
+        int nombreDeLivreurs;
         Vector<Object> ligne;
         int i;
 
         jeuResultat = accesBase.executeQuery(select);
 
         listeLivreurs = new Vector<Livreur>();
-        nombreDeContacts = (jeuResultat.getLignes()).size();
+        nombreDeLivreurs = (jeuResultat.getLignes()).size();
 
-        for (i = 0; i < nombreDeContacts; i++)
+        for (i = 0; i < nombreDeLivreurs; i++)
         {
             ligne = (jeuResultat.getLignes()).elementAt(i);
 
@@ -233,18 +233,18 @@ public class LivreurDAO {
         Vector<Livreur> listeLivreurs;
         Livreur livreur;
 
-        String select = "SELECT * FROM CONTACT";
+        String select = "SELECT * FROM LIVREUR";
 
-        int nombreDeContacts;
+        int nombreDeLivreurs;
         Vector<Object> ligne;
         int i;
 
         jeuResultat = accesBase.executeQuery(select);
 
         listeLivreurs = new Vector<Livreur>();
-        nombreDeContacts = (jeuResultat.getLignes()).size();
+        nombreDeLivreurs = (jeuResultat.getLignes()).size();
 
-        for (i = 0; i < nombreDeContacts; i++)
+        for (i = 0; i < nombreDeLivreurs; i++)
         {
             ligne = (jeuResultat.getLignes()).elementAt(i);
 

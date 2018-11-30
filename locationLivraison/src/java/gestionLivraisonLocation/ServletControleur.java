@@ -18,7 +18,7 @@ public class ServletControleur extends HttpServlet
     @Override
     public void init()
     {
-        String url = "jdbc:mysql://localhost/locationLivraison";
+        String url = "jdbc:mysql://localhost:8889/locationLivraison";
         String login ="root";
         String password = "";    
         Livreur livreur;      
@@ -34,6 +34,8 @@ public class ServletControleur extends HttpServlet
 
         //base = new BaseDeDonnees(getInitParameter("BDDSqlServer"));
         base = new BaseDeDonnees(url,login,password);
+        //base = new BaseDeDonnees(
+                //"jdbc:mysql://localhost/livraisonLocation", "root", "");
         //base.setFormatDate(getInitParameter("formatDateSqlServer"));
         base.setFormatDate("yyyy/MM/dd");
 
@@ -131,7 +133,7 @@ public class ServletControleur extends HttpServlet
             default:
                 session = request.getSession();
                 session.setAttribute("message", "");
-                session.setAttribute("numeroContact", "");
+                session.setAttribute("numeroLivreur", "");
                 session.setAttribute("choixAction", "liste");
 
                 jsp = "/jspAccueil.jsp";

@@ -1,23 +1,25 @@
+<%@page import="diversUtilitaires.Colonne"%>
+<%@page import="classesMetiers.Livreur"%>
 <%@page contentType="text/html" pageEncoding="utf-8"%>
-<%@page import="java.util.Vector, utilitairesMG.divers.*, metierMapping.*" %>
+<%@page import="java.util.Vector"%>
 
 <!DOCTYPE html>
 
 <%-- ------------------------------------------------------------------- --%>
-<%-- Vecteurs des contacts et des colonnes                               --%>
+<%-- Vecteurs des livreurs et des colonnes                               --%>
 <%-- ------------------------------------------------------------------- --%>
 <%
-    Vector<Contact> listeContacts =
-        (Vector)session.getAttribute("listeContacts");
+    Vector<Livreur> listeLivreurs =
+        (Vector)session.getAttribute("listeLivreurs");
     Vector<Colonne> listeColonnes =
         (Vector)session.getAttribute("listeColonnes");
-    Contact contact;
+    Livreur livreur;
 %>
 
 
 <html>
     <head>
-        <title>Liste des contacts</title>
+        <title>Liste des livreurs</title>
         <meta http-equiv="Content-Type"
               content="text/html; charset=utf-8" />
         <link rel="stylesheet" 
@@ -27,7 +29,7 @@
 
     <body>
         <table>
-            <caption>LISTE DES CONTACTS</caption>
+            <caption>LISTE DES LIVREURS</caption>
             <thead>
                 <tr>
                     <%
@@ -53,50 +55,57 @@
                     %>
                 </tr>
             </thead>
-
+            
             <tbody>
                 <%
-                    for (int i = 0; i < listeContacts.size(); i++)
+                    for (int i = 0; i < listeLivreurs.size(); i++)
                     {
-                        contact = listeContacts.elementAt(i);
+                        livreur = listeLivreurs.elementAt(i);
                 %>
                 <tr>
                     <td>
-                        <%= contact.getNumero()%>
+                        <%= livreur.getIdLivreur()%>
                     </td>
-
                     <td>
-                        <% if (contact.getNom() != null)
+                        <% if (livreur.getNomLivreur() != null)
                       {%>
-                        <%= contact.getNom()%>
+                        <%= livreur.getNomLivreur()%>
                         <% } %>
                     </td>
-
                     <td>
-                        <% if (contact.getAdresse() != null)
+                        <% if (livreur.getPrenomLivreur() != null)
                       {%>
-                        <%= contact.getAdresse()%>
+                        <%= livreur.getPrenomLivreur()%>
                         <% } %>
                     </td>
-
                     <td>
-                        <% if (contact.getCodePostal() != null)
+                        <% if (livreur.getNumPermisLivreur() != null)
                       {%>
-                        <%= contact.getCodePostal()%>
+                        <%= livreur.getNumPermisLivreur()%>
                         <% } %>
                     </td>
-
                     <td>
-                        <% if (contact.getVille() != null)
+                        <% if (livreur.getAdresseLivreur() != null)
                       {%>
-                        <%= contact.getVille()%>
+                        <%= livreur.getAdresseLivreur()%>
                         <% } %>
                     </td>
-
                     <td>
-                        <% if (contact.getCodeSecteur() != null)
+                        <% if (livreur.getCodePostalLivreur() != null)
                       {%>
-                        <%= contact.getCodeSecteur()%>
+                        <%= livreur.getCodePostalLivreur()%>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (livreur.getVilleLivreur() != null)
+                      {%>
+                        <%= livreur.getVilleLivreur()%>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (livreur.getNumeroSecteur() != null)
+                      {%>
+                        <%= livreur.getNumeroSecteur()%>
                         <% } %>
                     </td>
                 </tr>
@@ -105,7 +114,6 @@
                 %>
             </tbody>
         </table>
-
         <p id="pListe">
             <a href="ServletControleur?idEcran=3">Retour au menu principal</a>
         </p>

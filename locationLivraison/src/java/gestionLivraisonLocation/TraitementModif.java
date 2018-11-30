@@ -139,6 +139,8 @@ public class TraitementModif
         
         livreur.setIdLivreur(idLivreur);
         livreur.setNomLivreur(nomLivreur);
+        livreur.setPrenomLivreur(prenomLivreur);
+        livreur.setNumPermisLivreur(numeroSecteur);
         livreur.setAdresseLivreur(adresseLivreur);
         livreur.setCodePostalLivreur(codePostalLivreur);
         livreur.setVilleLivreur(villeLivreur);
@@ -162,7 +164,7 @@ public class TraitementModif
                 else
                 {
                     jspRetour = "/jspModif.jsp";
-                    session.setAttribute("message", "Le contact "
+                    session.setAttribute("message", "Le livreur "
                                          + livreur.getIdLivreur()
                                          + " a été supprimé");
                     session.setAttribute("livreur", livreur);

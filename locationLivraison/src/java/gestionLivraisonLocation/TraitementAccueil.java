@@ -6,7 +6,6 @@ import daoJdbcMapping.LivreurDAO;
 import daoJdbcMapping.SecteurDAO;
 import diversUtilitaires.Colonne;
 import java.sql.SQLException;
-import java.util.Set;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,13 +39,13 @@ public class TraitementAccueil
         LivreurDAO livreurDAO;
 
 // --------------------------------------------------------------------------
-// L'objet ContactDAO est une variable locale de la methode. Elle est creee a
+// L'objet LivreurDAO est une variable locale de la methode. Elle est creee a
 // chaque appel (et liberee a la fin). Il s'agit d'eviter le melange de
 // donnees entre plusieurs utilisateurs. En effet, la ServletControleur est
 // instanciée une fois. La classe TraitementAccueil une fois également. Si
-// l'objet ContactDAO etait declare en propriete de la classe
+// l'objet LivreurDAO etait declare en propriete de la classe
 // TraitementAccueil, elle serait commune a tous les utilisateurs. Or, un
-// objet ContactDAO contient une propriete de type JeuResultat qui est
+// objet LivreurDAO contient une propriete de type JeuResultat qui est
 // modifiee a chaque lecture dans la base.
 // --------------------------------------------------------------------------
         accesBase = new AccesBase(base);
@@ -73,7 +72,7 @@ public class TraitementAccueil
         {
             jspRetour = "/jspAccueil.jsp";
             session.setAttribute("message", e.getMessage());
-            session.setAttribute("numeroContact", "");
+            session.setAttribute("numeroLivreur", "");
             session.setAttribute("choixAction", "liste");
         }
         return jspRetour;
@@ -87,7 +86,7 @@ public class TraitementAccueil
         String jspRetour;
 
         Livreur livreur;
-        Integer numeroLivreur;
+        Integer idLivreur;
         Vector<Secteur> vSect;
         HttpSession session = request.getSession();
 
@@ -95,7 +94,7 @@ public class TraitementAccueil
         LivreurDAO livreurDAO;
         SecteurDAO secteurDAO;
 
-        String chaineIdLivreur = request.getParameter("numeroLivreur");
+        String chaineIdLivreur = request.getParameter("idLivreur");
 
         accesBase = new AccesBase(base);
 
@@ -107,10 +106,10 @@ public class TraitementAccueil
 
             try
             {
-                numeroLivreur = Integer.parseInt(chaineIdLivreur);
+                idLivreur = Integer.parseInt(chaineIdLivreur);
                 livreur = new Livreur();
                 //contact.setNumero(numeroContact);
-                livreur.setIdLivreur(numeroLivreur);
+                livreur.setIdLivreur(idLivreur);
                 //contactDAO.lire(contact);
                 livreurDAO.lire(livreur);
 
@@ -126,7 +125,7 @@ public class TraitementAccueil
             {
                 jspRetour = "/jspAccueil.jsp";
                 session.setAttribute("message", e.getMessage());
-                session.setAttribute("idLivreur", chaineIdLivreur);
+                session.setAttribute("numeroLivreur", chaineIdLivreur);
                 session.setAttribute("choixAction", "modification");
             }
             finally
@@ -138,7 +137,7 @@ public class TraitementAccueil
         {
             jspRetour = "/jspAccueil.jsp";
             session.setAttribute("message", e.getMessage());
-            session.setAttribute("idLivreur", chaineIdLivreur);
+            session.setAttribute("numeroLivreur", chaineIdLivreur);
             session.setAttribute("choixAction", "modification");
         }
 
@@ -154,13 +153,13 @@ public class TraitementAccueil
         HttpSession session = request.getSession();
 
         String choixAction = request.getParameter("choixAction");
-        String chaineIdLivreur = request.getParameter("idLivreur");
+        String chaineIdLivreur = request.getParameter("numeroLivreur");
 
         jspRetour = "/jspAccueil.jsp";
         session.setAttribute("message", 
                              "Ecran de " + choixAction + " non réalisé");
         session.setAttribute("choixAction", choixAction);
-        session.setAttribute("numeroContact", chaineIdLivreur);
+        session.setAttribute("numeroLivreur", chaineIdLivreur);
 
         return jspRetour;
     }

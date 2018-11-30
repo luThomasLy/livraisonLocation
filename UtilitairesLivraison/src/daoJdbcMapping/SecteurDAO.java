@@ -108,12 +108,12 @@ public class SecteurDAO {
         int rowCount;
         String update;
 
-        Integer code = secteur.getNumeroSecteur();
+        Integer numeroSecteur = secteur.getNumeroSecteur();
         String libelle = secteur.getLibelleSecteur();
 
         update = "UPDATE SECTEUR SET "
             + "LIBELLE = " + Conversion.chaineSQL(libelle) + " "
-            + "WHERE CODE = " + code;
+            + "WHERE NUMEROSECTEUR = " + numeroSecteur;
 
         rowCount = accesBase.executeUpdate(update);
 
@@ -128,9 +128,9 @@ public class SecteurDAO {
         int rowCount;
         String delete;
 
-        Integer code = secteur.getNumeroSecteur();
+        Integer numeroSecteur = secteur.getNumeroSecteur();
 
-        delete = "DELETE FROM SECTEUR WHERE CODE = " + code;
+        delete = "DELETE FROM SECTEUR WHERE NUMEROSECTEUR = " + numeroSecteur;
 
         rowCount = accesBase.executeUpdate(delete);
 
@@ -192,8 +192,5 @@ public class SecteurDAO {
     public Vector<Colonne> getListeColonnes()
     {
         return jeuResultat.getColonnes();
-    }
-    
-    
-    
+    }   
 }

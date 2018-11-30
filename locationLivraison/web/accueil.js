@@ -33,7 +33,7 @@ function validerAccueil()
             numero.className = "invalide";
             if(numero.value === "")
             {
-                message.innerHTML = "Saisir un numéro de contact."
+                message.innerHTML = "Saisir un numéro de livreur."
             }
             else
             {

@@ -4,12 +4,12 @@
 
 <% String message = (String) session.getAttribute("message");
     String choixAction = (String) session.getAttribute("choixAction");
-    String numeroContact = (String) session.getAttribute("numeroContact");
+    String numeroLivreur = (String) session.getAttribute("numeroLivreur");
 %>
 
 <html> 
     <head>
-        <title>Gestion des contacts : menu</title>
+        <title>Gestion des livreurs : menu</title>
         <meta http-equiv="Content-Type"
               content="text/html; charset=utf-8" />
         <link rel="stylesheet" 
@@ -23,13 +23,13 @@
     <body>
         <form action="ServletControleur?idEcran=1" method="post">
             <fieldset>
-                <legend>Gestion des contacts</legend>
+                <legend>Gestion des livreurs</legend>
                 <div class="divSaisieAccueil">
                     <div class="divTexte">
-                        <label for="numero">Numéro de contact :</label>
+                        <label for="numero">Numéro de livreur :</label>
                         <input type="text" 
-                               name="numeroContact" 
-                               value="<%=numeroContact%>" 
+                               name="numeroLivreur" 
+                               value="<%=numeroLivreur%>" 
                                size="8" 
                                maxlength="8" 
                                id="numero" />
@@ -122,7 +122,7 @@
                         <%
                             }
                         %>
-                        <label for="radio4">Liste des contacts</label>
+                        <label for="radio4">Liste des livreurs</label>
                     </div>
                 </div>
             </fieldset>
@@ -130,7 +130,8 @@
             <div>
                 <input type="submit"
                        class="envoyer"
-                       value="Envoyer" />
+                       value="liste"
+                       name="choixAction" href="ServletControleur?idEcran=1&choixAction=liste"/>
             </div>
         </form>
 
