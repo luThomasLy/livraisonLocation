@@ -12,21 +12,20 @@
         <title>Gestion des livreurs : menu</title>
         <meta http-equiv="Content-Type"
               content="text/html; charset=utf-8" />
-        <link rel="stylesheet" 
+        <link rel="stylesheet"
               type="text/css"
-              href="miseEnPage.css" />
+              href="loclivcss.css" />
         <script src="accueil.js"
                 type="text/javascript">
         </script>
     </head>
-
     <body>
         <form action="ServletControleur?idEcran=1" method="post">
             <fieldset>
                 <legend>Gestion des livreurs</legend>
                 <div class="divSaisieAccueil">
                     <div class="divTexte">
-                        <label for="numero">Numéro de livreur :</label>
+                        <label for="numeroLivreur">Numéro de livreur :</label>
                         <input type="text" 
                                name="numeroLivreur" 
                                value="<%=numeroLivreur%>" 
@@ -126,7 +125,6 @@
                     </div>
                 </div>
             </fieldset>
-
             <div>
                 <input type="submit"
                        class="envoyer"
@@ -134,7 +132,6 @@
                        name="choixAction" href="ServletControleur?idEcran=1&choixAction=liste"/>
             </div>
         </form>
-
         <div>
             <br />
             <br />

@@ -16,7 +16,6 @@
     Livreur livreur;
 %>
 
-
 <html>
     <head>
         <title>Liste des livreurs</title>
@@ -24,9 +23,8 @@
               content="text/html; charset=utf-8" />
         <link rel="stylesheet" 
               type="text/css"
-              href="miseEnPage.css" />
+              href="loclivcss.css" />
     </head>
-
     <body>
         <table>
             <caption>LISTE DES LIVREURS</caption>
@@ -54,8 +52,7 @@
                         }
                     %>
                 </tr>
-            </thead>
-            
+            </thead>  
             <tbody>
                 <%
                     for (int i = 0; i < listeLivreurs.size(); i++)
@@ -103,6 +100,12 @@
                         <% } %>
                     </td>
                     <td>
+                        <% if (livreur.getNumeroTelephoneLivreur()!= null)
+                      {%>
+                        <%= livreur.getNumeroTelephoneLivreur()%>
+                        <% } %>
+                    </td>
+                    <td>
                         <% if (livreur.getNumeroSecteur() != null)
                       {%>
                         <%= livreur.getNumeroSecteur()%>
@@ -115,7 +118,7 @@
             </tbody>
         </table>
         <p id="pListe">
-            <a href="ServletControleur?idEcran=3">Retour au menu principal</a>
+            <a href="ServletControleur?idEcran=2">Retour au menu principal</a>
         </p>
     </body>
 </html>
