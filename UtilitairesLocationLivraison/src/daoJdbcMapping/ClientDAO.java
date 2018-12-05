@@ -2,7 +2,10 @@
 package daoJdbcMapping;
 
 import classesMetiers.Client;
+import classesMetiers.Effectue;
 import classesMetiers.Livreur;
+import classesMetiers.Secteur;
+import diversUtilitaires.Colonne;
 import diversUtilitaires.Conversion;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -24,6 +27,7 @@ public class ClientDAO {
 // les donnees relatives aux colonnes.
 // --------------------------------------------------------------------------
     private JeuResultat jeuResultat;
+    private Vector<Effectue> listeEffectue;
 
 // ==========================================================================
 // METHODES
@@ -125,29 +129,150 @@ public class ClientDAO {
         int rowCount;
         String update;
 
-        Integer idLivreur = livreur.getIdLivreur();
-        String nomLivreur = livreur.getNomLivreur();
-        String prenomLivreur = livreur.getPrenomLivreur();
-        Integer numPermisLivreur = livreur.getNumPermisLivreur();
-        String adresseLivreur = livreur.getAdresseLivreur();
-        Integer codePostalLivreur = livreur.getCodePostalLivreur();
-        String villeLivreur = livreur.getVilleLivreur();
-        Integer numeroSecteur = livreur.getNumeroSecteur();
+        Integer idClient = client.getIdClient();
+        String nomClient = client.getNomClient();
+        String prenomClient = client.getPrenomClient();
+        String adresseClient = client.getAdresseClient();
+        Integer codePostalClient = client.getCodePostalClient();
+        String villeClient = client.getVilleClient();
+        Integer numeroTelClient = client.getNumeroTelClient();
+        String mailClient = client.getMailClient();
 
         update = "UPDATE LIVREUR SET "
-            + "IDLIVREUR = " + idLivreur + ", "
-            + "NOMLIVREUR = " + Conversion.chaineSQL(nomLivreur) + ", "
-            + "PRENOMLIVREUR = " + Conversion.chaineSQL(prenomLivreur) + ", "
-            + "NUMPERMISLIVREUR = " + numPermisLivreur + ", "     
-            + "ADRESSELIVREUR = " + Conversion.chaineSQL(adresseLivreur) + ", "
-            + "CODEPOSTALLIVREUR = " + codePostalLivreur + ", "
-            + "VILLELIVREUR = " + Conversion.chaineSQL(villeLivreur) + ", "
-            + "NUMEROSECTEUR = " + numeroSecteur + " "
-            + "WHERE NUMEROSECTEUR = " + numeroSecteur;
+            + "IDCLIENT = " + idClient + ", "
+            + "NOMCLIENT = " + Conversion.chaineSQL(nomClient) + ", "
+            + "PRENOMCLIENT = " + Conversion.chaineSQL(prenomClient) + ", "
+            + "ADRESSECLIENT = " + Conversion.chaineSQL(adresseClient) + ", "
+            + "CODEPOSTALCLIENT = " + codePostalClient + ", "
+            + "VILLECLIENT = " + Conversion.chaineSQL(villeClient) + ", "
+            + "NUMEROTELCLIENT = " + numeroTelClient + ", "
+            + "MAILCLIENT = " + Conversion.chaineSQL(mailClient);
 
         rowCount = accesBase.executeUpdate(update);
 
         return rowCount;
+    }    
+
+// --------------------------------------------------------------------------
+// Destruction (delete) d'un objet Client
+// --------------------------------------------------------------------------
+    public int detruire(Client client) throws SQLException
+    {
+        int rowCount;
+        String delete;
+
+        Integer idClient = client.getIdClient();
+
+        delete = "DELETE FROM CLIENT WHERE NUMERO = " + idClient;
+
+        rowCount = accesBase.executeUpdate(delete);
+
+        return rowCount;
+    }
+ 
+// --------------------------------------------------------------------------
+// Lecture d'un Client, pour un Effectue donne
+// --------------------------------------------------------------------------
+    public Client lireEffectue(Effectue effectue) throws SQLException
+    {
+        Client client = null;
+
+        if (effectue.getIdClient()!= null)
+        {
+            client = new Client();
+            client.setIdClient(effectue.getIdClient());
+            lire(client);
+        }
+        return client;
+    }    
+
+// --------------------------------------------------------------------------
+// Liste des clients pour une commande effectue donne
+// --------------------------------------------------------------------------
+    public Vector<Client> lireListe(Effectue effectue) throws SQLException
+    {
+        Vector<Client> listeClients;
+        Client client;
+
+        String select = "SELECT * FROM CLIENT WHERE IDCLIENT = ";
+        select += effectue.getIdClient();
+
+        int nombreDeClients;
+        Vector<Object> ligne;
+        int i;
+
+        jeuResultat = accesBase.executeQuery(select);
+
+        listeClients = new Vector<Client>();
+        nombreDeClients = (jeuResultat.getLignes()).size();
+
+        for (i = 0; i < nombreDeClients; i++)
+        {
+            ligne = (jeuResultat.getLignes()).elementAt(i);
+
+            client = new Client();
+            
+            client.setIdClient((Integer) ligne.elementAt(1));
+            client.setNomClient((String) ligne.elementAt(2));
+            client.setPrenomClient((String) ligne.elementAt(3));
+            client.setAdresseClient((String) ligne.elementAt(4));
+            client.setCodePostalClient((Integer) ligne.elementAt(5));
+            client.setVilleClient((String) ligne.elementAt(6));
+            client.setNumeroTelClient((Integer) ligne.elementAt(7));
+            client.setMailClient((String) ligne.elementAt(8));
+
+            client.setListeEffectue(listeEffectue);
+            listeClients.addElement(client);
+        }
+        return listeClients;
+    }
+    
+// --------------------------------------------------------------------------
+// Liste des Clients
+// --------------------------------------------------------------------------
+    public Vector<Client> lireListe() throws SQLException
+    {
+        Vector<Client> listeClients;
+        Client client;
+
+        String select = "SELECT * FROM CLIENT";
+
+        int nombreDeClients;
+        Vector<Object> ligne;
+        int i;
+
+        jeuResultat = accesBase.executeQuery(select);
+
+        listeClients = new Vector<Client>();
+        nombreDeClients = (jeuResultat.getLignes()).size();
+
+        for (i = 0; i < nombreDeClients; i++)
+        {
+            ligne = (jeuResultat.getLignes()).elementAt(i);
+
+            client = new Client();
+            
+            client.setIdClient((Integer) ligne.elementAt(1));
+            client.setNomClient((String) ligne.elementAt(2));
+            client.setPrenomClient((String) ligne.elementAt(3));
+            client.setAdresseClient((String) ligne.elementAt(4));
+            client.setCodePostalClient((Integer) ligne.elementAt(5));
+            client.setVilleClient((String) ligne.elementAt(6));
+            client.setNumeroTelClient((Integer) ligne.elementAt(7));
+            client.setMailClient((String) ligne.elementAt(8));
+
+            listeClients.addElement(client);
+        }
+
+        return listeClients;
+    }
+
+// --------------------------------------------------------------------------
+// Liste des colonnes de la table LIVREUR
+// --------------------------------------------------------------------------
+    public Vector<Colonne> getListeColonnes()
+    {
+        return jeuResultat.getColonnes();
     }    
     
 }

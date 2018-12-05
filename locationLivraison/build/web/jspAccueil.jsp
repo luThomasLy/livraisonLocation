@@ -19,6 +19,7 @@
                 type="text/javascript">
         </script>
     </head>
+    
     <body>
         <form action="ServletControleur?idEcran=1" method="post">
             <fieldset>
@@ -31,7 +32,7 @@
                                value="<%=numeroLivreur%>" 
                                size="8" 
                                maxlength="8" 
-                               id="numero" />
+                               id="numeroLivreur" />
                     </div>
                     <div class="divRadio">
                         <%  if (choixAction.compareTo("modification") == 0)
@@ -126,10 +127,13 @@
                 </div>
             </fieldset>
             <div>
-                <input type="submit"
+                <!--<input type="submit"
                        class="envoyer"
                        value="liste"
-                       name="choixAction" href="ServletControleur?idEcran=1&choixAction=liste"/>
+                       name="choixAction" href="ServletControleur?idEcran=1&choixAction=liste"/>-->
+                <input type="submit"
+                       class="envoyer"
+                       value="Envoyer" />
             </div>
         </form>
         <div>

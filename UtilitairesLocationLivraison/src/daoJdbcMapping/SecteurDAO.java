@@ -39,7 +39,7 @@ public class SecteurDAO {
         this.accesBase = accesBase;
     }
     
-    // --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // Lecture d'un objet Secteur (dont la clef est renseignee)
 // --------------------------------------------------------------------------
     public void lire(Secteur secteur) throws SQLException
@@ -62,7 +62,8 @@ public class SecteurDAO {
         if (rowCount == 1)
         {
             ligne = (jeuResultat.getLignes()).elementAt(0);
-
+            
+            //secteur.setNumeroSecteur((Integer) ligne.elementAt(1));
             secteur.setLibelleSecteur((String) ligne.elementAt(1));
         }
         else 

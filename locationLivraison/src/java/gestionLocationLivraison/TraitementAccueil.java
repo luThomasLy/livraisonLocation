@@ -72,7 +72,7 @@ public class TraitementAccueil
         {
             jspRetour = "/jspAccueil.jsp";
             session.setAttribute("message", e.getMessage());
-            session.setAttribute("numeroLivreur", "");
+            session.setAttribute("idLivreur", "");
             session.setAttribute("choixAction", "liste");
         }
         return jspRetour;
@@ -122,7 +122,7 @@ public class TraitementAccueil
             {
                 jspRetour = "/jspAccueil.jsp";
                 session.setAttribute("message", e.getMessage());
-                session.setAttribute("numeroLivreur", chaineIdLivreur);
+                session.setAttribute("idLivreur", chaineIdLivreur);
                 session.setAttribute("choixAction", "modification");
             }
             finally
@@ -134,7 +134,7 @@ public class TraitementAccueil
         {
             jspRetour = "/jspAccueil.jsp";
             session.setAttribute("message", e.getMessage());
-            session.setAttribute("numeroLivreur", chaineIdLivreur);
+            session.setAttribute("idLivreur", chaineIdLivreur);
             session.setAttribute("choixAction", "modification");
         }
         return jspRetour;
@@ -149,7 +149,7 @@ public class TraitementAccueil
         HttpSession session = request.getSession();
 
         String choixAction = request.getParameter("choixAction");
-        String chaineIdLivreur = request.getParameter("numeroLivreur");
+        String chaineIdLivreur = request.getParameter("idLivreur");
 
         jspRetour = "/jspAccueil.jsp";
         session.setAttribute("message", 

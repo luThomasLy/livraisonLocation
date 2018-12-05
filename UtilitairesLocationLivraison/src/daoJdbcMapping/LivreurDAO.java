@@ -142,7 +142,7 @@ public class LivreurDAO {
             + "ADRESSELIVREUR = " + Conversion.chaineSQL(adresseLivreur) + ", "
             + "CODEPOSTALLIVREUR = " + codePostalLivreur + ", "
             + "VILLELIVREUR = " + Conversion.chaineSQL(villeLivreur) + ", "
-            + "NUMEROSECTEUR = " + numeroSecteur + " "
+            + "NUMEROSECTEUR = " + numeroSecteur + ", "
             + "WHERE NUMEROSECTEUR = " + numeroSecteur;
 
         rowCount = accesBase.executeUpdate(update);

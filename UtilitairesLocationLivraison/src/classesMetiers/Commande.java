@@ -1,6 +1,7 @@
 
 package classesMetiers;
 
+import java.util.Date;
 import java.util.Vector;
 /**
  *
@@ -14,7 +15,7 @@ public class Commande implements java.io.Serializable{
 // Toutes les colonnes de la table y compris les clefs etrangeres
 // --------------------------------------------------------------------------
     private Integer idCommande;             // Clef primaire
-    private String dateCommande;
+    private Date dateCommande;
 
 // --------------------------------------------------------------------------
 // Proprietes de mapping des tables et relations
@@ -23,7 +24,6 @@ public class Commande implements java.io.Serializable{
     private Vector<Recupere> listeRecupere;
     private Vector<Livre> listeLivre;
     private Vector<Concerne> listeConcerne;
-//    private Vector<Correspond> listeCorrespond;
     private Vector<Effectue> listeEffectue;
 
 // ==========================================================================
@@ -43,7 +43,7 @@ public class Commande implements java.io.Serializable{
         this.idCommande = idCommande;
     }
 
-    public void setDateCommande(String dateCommande) {
+    public void setDateCommande(Date dateCommande) {
         this.dateCommande = dateCommande;
     }
 
@@ -61,10 +61,6 @@ public class Commande implements java.io.Serializable{
         this.listeConcerne = listeConcerne;
     }
 
-//    public void setListeCorrespond(Vector<Correspond> listeCorrespond) {
-//        this.listeCorrespond = listeCorrespond;
-//    }
-
     public void setListeEffectue(Vector<Effectue> listeEffectue) {
         this.listeEffectue = listeEffectue;
     }
@@ -76,7 +72,7 @@ public class Commande implements java.io.Serializable{
         return idCommande;
     }
 
-    public String getDateCommande() {
+    public Date getDateCommande() {
         return dateCommande;
     }
     
@@ -93,10 +89,6 @@ public class Commande implements java.io.Serializable{
     public Vector<Concerne> getListeConcerne() {
         return listeConcerne;
     }
-
-//    public Vector<Correspond> getListeCorrespond() {
-//        return listeCorrespond;
-//    }
 
     public Vector<Effectue> getListeEffectue() {
         return listeEffectue;

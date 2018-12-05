@@ -18,7 +18,7 @@ public class Livreur implements java.io.Serializable {
     private String villeLivreur;
     private Integer numeroTelephoneLivreur;
     
-    private Integer numeroSecteur;                 // Clef etrangere vers Livreur
+    private Integer numeroSecteur;                 // Clef etrangere vers Secteur
 
 // --------------------------------------------------------------------------
 // Proprietes de mapping à la relation Recupere et Livre 0,n et 1,n

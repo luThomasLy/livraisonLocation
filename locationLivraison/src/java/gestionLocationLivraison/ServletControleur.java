@@ -132,10 +132,11 @@ public class ServletControleur extends HttpServlet
             default:
                 session = request.getSession();
                 session.setAttribute("message", "");
-                session.setAttribute("numeroLivreur", "");
+                session.setAttribute("idLivreur", "");
                 session.setAttribute("choixAction", "liste");
 
                 jsp = "/jspAccueil.jsp";
+                //jsp = "/jspLivreur.jsp";
         }
         dispatcher = contexte.getRequestDispatcher(jsp);
         dispatcher.forward(request, response);

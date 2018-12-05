@@ -61,11 +61,12 @@ public class TraitementModif
         livreur = (Livreur) session.getAttribute("livreur");
         vSect = (Vector<Secteur>) session.getAttribute("vSect");
 
-        String idLvreur = request.getParameter("idLvreur");
-        idLvreur = idLvreur.trim();
-        if (idLvreur.compareTo("") == 0)
+        //cast d'integer en string
+        String stringIdLivreur = request.getParameter("idLvreur");
+        Integer idLivreur = null;
+        if (stringIdLivreur.compareTo("") == 0)
         {
-            idLvreur = null;
+            idLivreur = new Integer(stringIdLivreur);
         }
 
         String nomLivreur = request.getParameter("nomLivreur");
@@ -82,11 +83,12 @@ public class TraitementModif
             prenomLivreur = null;
         }
         
-        String numPermisLivreur = request.getParameter("numPermisLivreur");
-        numPermisLivreur = numPermisLivreur.trim();
-        if (numPermisLivreur.compareTo("") == 0)
+        //cast d'integer en string
+        String stringNumPermisLivreur = request.getParameter("numPermisLivreur");
+        Integer numPermisLivreur = null;
+        if (stringNumPermisLivreur.compareTo("") == 0)
         {
-            numPermisLivreur = null;
+            numPermisLivreur = new Integer(stringNumPermisLivreur);
         }
         
         String adresseLivreur = request.getParameter("adresseLivreur");
@@ -102,7 +104,15 @@ public class TraitementModif
 //        {
 //            codePostalLivreur = null;
 //        }
-        
+
+        //cast d'integer en string
+        String stringCodePostalSecteur = request.getParameter("codePostalLivreur");
+        Integer codePostalLivreur = null;
+        if (stringCodePostalSecteur.compareTo("") != 0)
+        {
+            codePostalLivreur = new Integer(stringCodePostalSecteur);
+        }
+
         String villeLivreur = request.getParameter("villeLivreur");
         villeLivreur = villeLivreur.trim();
         if (villeLivreur.compareTo("") == 0)
@@ -110,18 +120,12 @@ public class TraitementModif
             villeLivreur = null;
         }
         
-        String stringIdLivreur = request.getParameter("idLivreur");
-        Integer idLivreur = null;
-        if (stringIdLivreur.compareTo("") != 0)
+        //cast d'integer en string
+        String numeroTelephoneLivreur = request.getParameter("numeroTelephoneLivreur");
+        numeroTelephoneLivreur = numeroTelephoneLivreur.trim();
+        if (numeroTelephoneLivreur.compareTo("") == 0)
         {
-            idLivreur = new Integer(stringIdLivreur);
-        }
-        
-        String stringCodePostalSecteur = request.getParameter("codePostalLivreur");
-        Integer codePostalLivreur = null;
-        if (stringCodePostalSecteur.compareTo("") != 0)
-        {
-            codePostalLivreur = new Integer(stringCodePostalSecteur);
+            numeroTelephoneLivreur = null;
         }
 
         String stringNumeroSecteur = request.getParameter("numeroSecteur");

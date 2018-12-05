@@ -25,6 +25,7 @@
               type="text/css"
               href="loclivcss.css" />
     </head>
+    
     <body>
         <table>
             <caption>LISTE DES LIVREURS</caption>
@@ -118,7 +119,8 @@
             </tbody>
         </table>
         <p id="pListe">
-            <a href="ServletControleur?idEcran=2">Retour au menu principal</a>
+            <!--<a href="ServletControleur?idEcran=2">Retour au menu principal</a>-->
+            <a href="ServletControleur?idEcran=3">Retour au menu principal</a>
         </p>
     </body>
 </html>

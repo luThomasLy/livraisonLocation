@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------------------- */
-/* Script specifique a l'ecran d'accueil                                      */
+/* Script specifique a l'ecran du accueil                                      */
 /* -------------------------------------------------------------------------- */
 
 window.onload = initForm;
