@@ -3,7 +3,7 @@
 /* ========================================================================== */
 body
 {
-   background : #77FFFF;
+    background : #cccccc;
    color : darkblue;
    font-family : 'calibri';
 }
@@ -13,7 +13,7 @@ body
 /* -------------------------------------------------------------------------- */
 fieldset
 {
-   background : #DDFFFF;
+    background : #ffffff;
    margin : 2em;
    padding : 1em;
 }
@@ -84,8 +84,8 @@ tbody
    height : 1em;
    margin : 2em;
    padding : 0.5em;
-   background : #DDFFFF;
-}
+   background : #DDFFFF
+;}
 
 /* -------------------------------------------------------------------------- */
 /* Bouton Envoyer (envoi d'un formulaire)                                     */

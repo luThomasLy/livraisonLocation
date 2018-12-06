@@ -4,12 +4,12 @@
 
 <% String message = (String) session.getAttribute("message");
     String choixAction = (String) session.getAttribute("choixAction");
-    String numeroLivreur = (String) session.getAttribute("numeroLivreur");
+    String idCommande = (String) session.getAttribute("idCommande");
 %>
 
 <html> 
     <head>
-        <title>Gestion des livreurs : menu</title>
+        <title>Gestion des Commandes : menu</title>
         <meta http-equiv="Content-Type"
               content="text/html; charset=utf-8" />
         <link rel="stylesheet"
@@ -21,18 +21,18 @@
     </head>
     
     <body>
-        <form action="ServletControleur?idEcran=1" method="post">
+        <form action="ServletControleur?idEcran=5" method="post">
             <fieldset>
-                <legend>Gestion des livreurs</legend>
+                <legend>Gestion des Commandes</legend>
                 <div class="divSaisieAccueil">
                     <div class="divTexte">
-                        <label for="numeroLivreur">Numéro de livreur :</label>
+                        <label for="idCommande">Numéro de commande :</label>
                         <input type="text" 
-                               name="numeroLivreur" 
-                               value="<%=numeroLivreur%>" 
+                               name="idCommande" 
+                               value="<%=idCommande%>" 
                                size="8" 
                                maxlength="8" 
-                               id="numeroLivreur" />
+                               id="idCommande" />
                     </div>
                     <div class="divRadio">
                         <%  if (choixAction.compareTo("modification") == 0)
@@ -122,7 +122,7 @@
                         <%
                             }
                         %>
-                        <label for="radio4">Liste des livreurs</label>
+                        <label for="radio4">Liste des commandes</label>
                     </div>
                 </div>
             </fieldset>
