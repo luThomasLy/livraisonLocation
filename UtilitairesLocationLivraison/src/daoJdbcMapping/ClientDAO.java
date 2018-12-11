@@ -2,7 +2,6 @@
 package daoJdbcMapping;
 
 import classesMetiers.Client;
-import classesMetiers.Effectue;
 import classesMetiers.Livreur;
 import classesMetiers.Secteur;
 import diversUtilitaires.Colonne;
@@ -27,7 +26,7 @@ public class ClientDAO {
 // les donnees relatives aux colonnes.
 // --------------------------------------------------------------------------
     private JeuResultat jeuResultat;
-    private Vector<Effectue> listeEffectue;
+    //private Vector<Effectue> listeEffectue;
 
 // ==========================================================================
 // METHODES
@@ -173,59 +172,59 @@ public class ClientDAO {
 // --------------------------------------------------------------------------
 // Lecture d'un Client, pour un Effectue donne
 // --------------------------------------------------------------------------
-    public Client lireEffectue(Effectue effectue) throws SQLException
-    {
-        Client client = null;
-
-        if (effectue.getIdClient()!= null)
-        {
-            client = new Client();
-            client.setIdClient(effectue.getIdClient());
-            lire(client);
-        }
-        return client;
-    }    
+//    public Client lireEffectue(Effectue effectue) throws SQLException
+//    {
+//        Client client = null;
+//
+//        if (effectue.getIdClient()!= null)
+//        {
+//            client = new Client();
+//            client.setIdClient(effectue.getIdClient());
+//            lire(client);
+//        }
+//        return client;
+//    }    
 
 // --------------------------------------------------------------------------
 // Liste des clients pour une commande effectue donne
 // --------------------------------------------------------------------------
-    public Vector<Client> lireListe(Effectue effectue) throws SQLException
-    {
-        Vector<Client> listeClients;
-        Client client;
-
-        String select = "SELECT * FROM CLIENT WHERE IDCLIENT = ";
-        select += effectue.getIdClient();
-
-        int nombreDeClients;
-        Vector<Object> ligne;
-        int i;
-
-        jeuResultat = accesBase.executeQuery(select);
-
-        listeClients = new Vector<Client>();
-        nombreDeClients = (jeuResultat.getLignes()).size();
-
-        for (i = 0; i < nombreDeClients; i++)
-        {
-            ligne = (jeuResultat.getLignes()).elementAt(i);
-
-            client = new Client();
-            
-            client.setIdClient((Integer) ligne.elementAt(1));
-            client.setNomClient((String) ligne.elementAt(2));
-            client.setPrenomClient((String) ligne.elementAt(3));
-            client.setAdresseClient((String) ligne.elementAt(4));
-            client.setCodePostalClient((Integer) ligne.elementAt(5));
-            client.setVilleClient((String) ligne.elementAt(6));
-            client.setNumeroTelClient((Integer) ligne.elementAt(7));
-            client.setMailClient((String) ligne.elementAt(8));
-
-            client.setListeEffectue(listeEffectue);
-            listeClients.addElement(client);
-        }
-        return listeClients;
-    }
+//    public Vector<Client> lireListe(Effectue effectue) throws SQLException
+//    {
+//        Vector<Client> listeClients;
+//        Client client;
+//
+//        String select = "SELECT * FROM CLIENT WHERE IDCLIENT = ";
+//        select += effectue.getIdClient();
+//
+//        int nombreDeClients;
+//        Vector<Object> ligne;
+//        int i;
+//
+//        jeuResultat = accesBase.executeQuery(select);
+//
+//        listeClients = new Vector<Client>();
+//        nombreDeClients = (jeuResultat.getLignes()).size();
+//
+//        for (i = 0; i < nombreDeClients; i++)
+//        {
+//            ligne = (jeuResultat.getLignes()).elementAt(i);
+//
+//            client = new Client();
+//            
+//            client.setIdClient((Integer) ligne.elementAt(1));
+//            client.setNomClient((String) ligne.elementAt(2));
+//            client.setPrenomClient((String) ligne.elementAt(3));
+//            client.setAdresseClient((String) ligne.elementAt(4));
+//            client.setCodePostalClient((Integer) ligne.elementAt(5));
+//            client.setVilleClient((String) ligne.elementAt(6));
+//            client.setNumeroTelClient((Integer) ligne.elementAt(7));
+//            client.setMailClient((String) ligne.elementAt(8));
+//
+//            //client.setListeEffectue(listeEffectue);
+//            listeClients.addElement(client);
+//        }
+//        return listeClients;
+//    }
     
 // --------------------------------------------------------------------------
 // Liste des Clients

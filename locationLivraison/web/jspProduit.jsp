@@ -1,46 +1,139 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Gestion des produits : menu</title>
-        <meta http-equiv="Content-Type"
-              content="text/html; charset=utf-8" />
-        <!--<link rel="stylesheet"type="text/css"href="loclivcss.css" />-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
+<% String message = (String) session.getAttribute("message");
+    String choixAction = (String) session.getAttribute("choixAction");
+    String idProduit = (String) session.getAttribute("idProduit");
+%>
 
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                    <a class="navbar-brand" href="#">locationLivraison</a>
+<%@include file="jspHeader.jsp" %>
+<link href="locliv.css" rel="stylesheet" type="text/css"/>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8">
+        <form action="ServletControleur?idEcran=1" method="post">
+            <fieldset>
+                <legend>Gestion des produits</legend>
+                <div class="divSaisieAccueil">
+                    <div class="divTexte">
+                        <label for="idProduit">Numéro de produit :</label>
+                        <input type="text"
+                               name="idProduit"
+                               value="<%=idProduit%>"
+                               size="8"
+                               maxlength="8"
+                               id="idProduit"/>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="divRadio">
+                        <%  if (choixAction.compareTo("modification") == 0) {
+                        %>
+
+                        <input type="radio" 
+                               name="choixAction" 
+                               value="modification" 
+                               id="radio1" 
+                               checked="checked" />
+                        <%  } else {
+                        %>
+                        <input type="radio" 
+                               name="choixAction" 
+                               value="modification" 
+                               id="radio1" />
+                        <%
+                            }
+                        %>
+                        <label for="radio1">Modification</label>
+
+                        <%  if (choixAction.compareTo("création") == 0) {
+                        %>        
+                        <input type="radio" 
+                               name="choixAction" 
+                               value="création" 
+                               id="radio2" 
+                               checked="checked" />
+                        <%  } else {
+                        %>
+                        <input type="radio" 
+                               name="choixAction" 
+                               value="création" 
+                               id="radio2" />
+                        <%
+                            }
+                        %>
+                        <label for="radio2">Création</label>
+
+                        <%  if (choixAction.compareTo("suppression") == 0) {
+                        %>        
+                        <input type="radio" 
+                               name="choixAction" 
+                               value="suppression" 
+                               id="radio3" 
+                               checked="checked" />
+                        <%  } else {
+                        %>
+                        <input type="radio" 
+                               name="choixAction" 
+                               value="suppression" 
+                               id="radio3" />
+                        <%
+                            }
+                        %>
+                        <label for="radio3">Suppression</label>
+
+                        <br />
+                        <br />
+
+                        <%  if (choixAction.compareTo("listeProd") == 0) {
+                        %>        
+                        <input type="radio" 
+                               name="choixAction" 
+                               value="listeProd" 
+                               id="radio4" 
+                               checked="checked" />
+                        <%  } else {
+                        %>
+                        <input type="radio" 
+                               name="choixAction" 
+                               value="listeProd" 
+                               id="radio4" />
+                        <%
+                            }
+                        %>
+                        <label for="radio4">Liste des produits</label>
+                    </div>
                 </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="jspAccueil.jsp">Accueil</a></li>
-
-                        <li><a href="jspProduit.jsp">Produits</a></li>
-                        <li><a href="jspCommande.jsp">Commandes</a></li>
-                        <li><a href="jspLivreur.jsp">Livreurs</a></li>
-
-                        <li><a href="jspContact.jsp">Contact</a></li>
-                        <li><a href="#">A propos</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="jspLogin.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>
-                </div>
+            </fieldset>
+            <div>
+                <!--<input type="submit"
+                       class="envoyer"
+                       value="liste"
+                       name="choixAction" href="ServletControleur?idEcran=1&choixAction=liste"/>-->
+                <br>
+                <br>
+                <input type="submit"
+                       class="envoyer"
+                       value="Envoyer" />
             </div>
-        </nav>
+        </form>
+    </div>
+</div> 
+<div>
+    <br />
+    <br />
+    <br />
+    <p id=message><%=message%></p>
+</div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
-    </body>
-</html>
+<%@include file="jspFooter.jsp" %>   

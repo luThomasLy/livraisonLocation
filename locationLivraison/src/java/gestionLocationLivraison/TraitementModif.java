@@ -36,8 +36,8 @@ public class TraitementModif
 
         jspRetour = "/jspAccueil.jsp";
         session.setAttribute("message", "Modification annulée");
-        session.setAttribute("numeroLivreur",livreur.getIdLivreur().toString());
-        session.setAttribute("choixAction", "modification");
+        session.setAttribute("idLivreur",livreur.getIdLivreur().toString());
+        session.setAttribute("choixAction", "Modification");
 
         return jspRetour;
     }

@@ -24,7 +24,7 @@ public class Commande implements java.io.Serializable{
     private Vector<Recupere> listeRecupere;
     private Vector<Livre> listeLivre;
     private Vector<Concerne> listeConcerne;
-    private Vector<Effectue> listeEffectue;
+    //private Vector<Effectue> listeEffectue;
 
 // ==========================================================================
 // METHODES
@@ -60,10 +60,10 @@ public class Commande implements java.io.Serializable{
     public void setListeConcerne(Vector<Concerne> listeConcerne) {
         this.listeConcerne = listeConcerne;
     }
-
-    public void setListeEffectue(Vector<Effectue> listeEffectue) {
-        this.listeEffectue = listeEffectue;
-    }
+    
+//    public void setListeEffectue(Vector<Effectue> listeEffectue) {
+//        this.listeEffectue = listeEffectue;
+//    }
 
 // --------------------------------------------------------------------------
 // GETTERS
@@ -89,10 +89,10 @@ public class Commande implements java.io.Serializable{
     public Vector<Concerne> getListeConcerne() {
         return listeConcerne;
     }
-
-    public Vector<Effectue> getListeEffectue() {
-        return listeEffectue;
-    }
+    
+//    public Vector<Effectue> getListeEffectue() {
+//        return listeEffectue;
+//    }
     
 // --------------------------------------------------------------------------
 // AFFICHAGE DE LA COMMANDE (POUR MISE AU POINT)

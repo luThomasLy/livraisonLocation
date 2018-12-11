@@ -4,6 +4,7 @@ package gestionLocationLivraison;
 // ServletControleur.java : servlet d'accueil du projet locationLivraison
 // ==========================================================================
 import classesMetiers.Livreur;
+import classesMetiers.Produit;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -21,7 +22,8 @@ public class ServletControleur extends HttpServlet
 //        String url = "jdbc:mysql://localhost:8889/locationLivraison";
 //        String login ="root";
 //        String password = "";    
-        Livreur livreur;      
+        Livreur livreur;
+        //Produit produit;
        
         try
         {
@@ -96,13 +98,13 @@ public class ServletControleur extends HttpServlet
             case 1:
                 choixAction = request.getParameter("choixAction");
 
-                if (choixAction.compareTo("liste") == 0)
+                if (choixAction.compareTo("listeLiv") == 0)
                 {
                     jsp = traitementAccueil.traitementListe(request);
                 }
                 else
                 {
-                    if (choixAction.compareTo("modification") == 0)
+                    if (choixAction.compareTo("Modification") == 0)
                     {
                         jsp = traitementAccueil.traitementModif(request);
                     }
@@ -132,11 +134,10 @@ public class ServletControleur extends HttpServlet
             default:
                 session = request.getSession();
                 session.setAttribute("message", "");
-                session.setAttribute("idLivreur", "");
-                session.setAttribute("choixAction", "liste");
+                session.setAttribute("idLivreur", "");//livreur
+                session.setAttribute("choixAction", "listeLiv");
 
                 jsp = "/jspAccueil.jsp";
-                //jsp = "/jspLivreur.jsp";
         }
         dispatcher = contexte.getRequestDispatcher(jsp);
         dispatcher.forward(request, response);

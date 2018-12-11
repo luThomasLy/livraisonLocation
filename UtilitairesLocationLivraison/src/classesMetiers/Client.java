@@ -22,7 +22,7 @@ public class Client implements java.io.Serializable{
 // --------------------------------------------------------------------------
 // Proprietes de mapping avec la table Commande
 // --------------------------------------------------------------------------
-    private Vector <Effectue> listeEffectue;
+    //private Vector <Effectue> listeEffectue;
 
 // ==========================================================================
 // METHODES
@@ -68,12 +68,6 @@ public class Client implements java.io.Serializable{
     public void setMailClient(String mailClient) {
         this.mailClient = mailClient;
     }
-    
-    //les listes des associations
-
-    public void setListeEffectue(Vector<Effectue> listeEffectue) {
-        this.listeEffectue = listeEffectue;
-    }
 
 // --------------------------------------------------------------------------
 // GETTERS
@@ -112,9 +106,9 @@ public class Client implements java.io.Serializable{
     
     //les listes des associations
 
-    public Vector<Effectue> getListeEffectue() {
-        return listeEffectue;
-    }
+//    public Vector<Effectue> getListeEffectue() {
+//        return listeEffectue;
+//    }
    
 // --------------------------------------------------------------------------
 // AFFICHAGE DE LA COMMANDE (POUR MISE AU POINT)

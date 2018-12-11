@@ -79,6 +79,10 @@ public class Produit implements java.io.Serializable {
         return prixProduit;
     }
 
+    public Integer getStockTotalProduit() {
+        return stockTotalProduit;
+    }
+
     //les listes des associations
     
     public Vector<Concerne> getListeConcerne() {
