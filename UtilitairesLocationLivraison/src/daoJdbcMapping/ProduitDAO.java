@@ -1,9 +1,7 @@
 package daoJdbcMapping;
 
 import classesMetiers.Concerne;
-import classesMetiers.Livreur;
 import classesMetiers.Produit;
-import classesMetiers.Secteur;
 import diversUtilitaires.Colonne;
 import diversUtilitaires.Conversion;
 import java.sql.SQLException;

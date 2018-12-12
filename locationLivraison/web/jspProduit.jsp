@@ -89,18 +89,18 @@
                         <br />
                         <br />
 
-                        <%  if (choixAction.compareTo("listeProd") == 0) {
+                        <%  if (choixAction.compareTo("liste") == 0) {
                         %>        
                         <input type="radio" 
                                name="choixAction" 
-                               value="listeProd" 
+                               value="liste" 
                                id="radio4" 
                                checked="checked" />
                         <%  } else {
                         %>
                         <input type="radio" 
                                name="choixAction" 
-                               value="listeProd" 
+                               value="liste" 
                                id="radio4" />
                         <%
                             }

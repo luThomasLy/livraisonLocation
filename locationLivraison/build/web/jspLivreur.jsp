@@ -66,7 +66,7 @@
                         <%
                             }
                         %>
-                        <label for="radio2">Création</label>
+                        <label for="radio2"><a href="jspCreationLivreur.jsp">Création</label>
 
                         <%  if (choixAction.compareTo("suppression") == 0) {
                         %>        
@@ -89,18 +89,18 @@
                         <br />
                         <br />
 
-                        <%  if (choixAction.compareTo("listeLiv") == 0) {
+                        <%  if (choixAction.compareTo("liste") == 0) {
                         %>        
                         <input type="radio" 
                                name="choixAction" 
-                               value="listeLiv" 
+                               value="liste" 
                                id="radio4" 
                                checked="checked" />
                         <%  } else {
                         %>
                         <input type="radio" 
                                name="choixAction" 
-                               value="listeLiv" 
+                               value="liste" 
                                id="radio4" />
                         <%
                             }

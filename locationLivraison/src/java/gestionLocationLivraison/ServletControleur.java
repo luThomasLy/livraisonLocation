@@ -23,8 +23,7 @@ public class ServletControleur extends HttpServlet
 //        String login ="root";
 //        String password = "";    
         Livreur livreur;
-        //Produit produit;
-       
+        
         try
         {
             //Class.forName(getInitParameter("driverJDBCSqlServer"));
@@ -98,7 +97,7 @@ public class ServletControleur extends HttpServlet
             case 1:
                 choixAction = request.getParameter("choixAction");
 
-                if (choixAction.compareTo("listeLiv") == 0)
+                if (choixAction.compareTo("liste") == 0)
                 {
                     jsp = traitementAccueil.traitementListe(request);
                 }
@@ -107,7 +106,7 @@ public class ServletControleur extends HttpServlet
                     if (choixAction.compareTo("Modification") == 0)
                     {
                         jsp = traitementAccueil.traitementModif(request);
-                    }
+                    }    
                     else
                     {
                         jsp = traitementAccueil.traitementNonRealise(request);
@@ -135,7 +134,7 @@ public class ServletControleur extends HttpServlet
                 session = request.getSession();
                 session.setAttribute("message", "");
                 session.setAttribute("idLivreur", "");//livreur
-                session.setAttribute("choixAction", "listeLiv");
+                session.setAttribute("choixAction", "liste");
 
                 jsp = "/jspAccueil.jsp";
         }
