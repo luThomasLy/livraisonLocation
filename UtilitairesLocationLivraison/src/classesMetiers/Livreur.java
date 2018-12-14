@@ -176,4 +176,7 @@ public class Livreur implements java.io.Serializable {
     public void setIdLivreur(Integer idLivreur) {
         this.idLivreur = idLivreur;
     }
+
+
+   
 }

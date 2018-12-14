@@ -103,7 +103,7 @@ public class ServletControleur extends HttpServlet
                 }
                 else
                 {
-                    if (choixAction.compareTo("Modification") == 0)
+                    if (choixAction.compareTo("modification") == 0)
                     {
                         jsp = traitementAccueil.traitementModif(request);
                     }    

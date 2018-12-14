@@ -99,7 +99,7 @@ public class TraitementAccueil
         LivreurDAO livreurDAO;
         SecteurDAO secteurDAO;
         
-        String chaineIdLivreur = request.getParameter("idLivreur");//Livreur
+        String chaineIdLivreur = request.getParameter("numeroLivreur");//Livreur
         
         accesBase = new AccesBase(base);
 
@@ -107,7 +107,7 @@ public class TraitementAccueil
         {
             accesBase.getConnection();
             livreurDAO = new LivreurDAO(accesBase);//livreur
-            secteurDAO = new SecteurDAO(accesBase);
+            //secteurDAO = new SecteurDAO(accesBase);
             
             try
             {
@@ -117,12 +117,12 @@ public class TraitementAccueil
                 livreur.setIdLivreur(idLivreur);
                 livreurDAO.lire(livreur);
                 
-                vSect = secteurDAO.lireListe();
+                //vSect = secteurDAO.lireListe();
 
                 jspRetour = "/jspModif.jsp";
                 session.setAttribute("message", "");
                 session.setAttribute("livreur", livreur);
-                session.setAttribute("vSect", vSect);
+                //session.setAttribute("vSect", vSect);
                 
             }
             catch (NumberFormatException e)

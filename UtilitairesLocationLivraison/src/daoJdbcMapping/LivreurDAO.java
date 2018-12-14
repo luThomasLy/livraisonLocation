@@ -2,6 +2,7 @@
 package daoJdbcMapping;
 
 //import classesMetiers.Livreur;
+
 import classesMetiers.Livreur;
 import classesMetiers.Secteur;
 import diversUtilitaires.*;
@@ -62,13 +63,15 @@ public class LivreurDAO {
         {
             ligne = (jeuResultat.getLignes()).elementAt(0);
 
-            livreur.setIdLivreur((Integer) ligne.elementAt(1));
-            livreur.setNomLivreur((String) ligne.elementAt(2));
-            livreur.setPrenomLivreur((String) ligne.elementAt(3));
-            livreur.setNumPermisLivreur((Integer) ligne.elementAt(4));
-            livreur.setAdresseLivreur((String) ligne.elementAt(5));
-            livreur.setCodePostalLivreur((Integer) ligne.elementAt(6));
-            livreur.setVilleLivreur((String) ligne.elementAt(7));
+            //livreur.setIdLivreur((Integer) ligne.elementAt(0));
+            livreur.setNomLivreur((String) ligne.elementAt(1));
+            livreur.setPrenomLivreur((String) ligne.elementAt(2));
+            livreur.setNumPermisLivreur((Integer) ligne.elementAt(3));
+            livreur.setAdresseLivreur((String) ligne.elementAt(4));
+            livreur.setCodePostalLivreur((Integer) ligne.elementAt(5));
+            livreur.setVilleLivreur((String) ligne.elementAt(6));
+            livreur.setNumeroTelephoneLivreur((Integer) ligne.elementAt(7));
+           
             livreur.setNumeroSecteur((Integer) ligne.elementAt(8));
         }
         else 

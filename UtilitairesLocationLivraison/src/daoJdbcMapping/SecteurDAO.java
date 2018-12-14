@@ -63,7 +63,7 @@ public class SecteurDAO {
         {
             ligne = (jeuResultat.getLignes()).elementAt(0);
             
-            //secteur.setNumeroSecteur((Integer) ligne.elementAt(1));
+            secteur.setNumeroSecteur((Integer) ligne.elementAt(0));
             secteur.setLibelleSecteur((String) ligne.elementAt(1));
         }
         else 
