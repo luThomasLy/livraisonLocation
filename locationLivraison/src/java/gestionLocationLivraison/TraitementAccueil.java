@@ -91,13 +91,13 @@ public class TraitementAccueil
         
         Livreur livreur;
         Integer idLivreur;
-        Vector<Secteur> vSect;
+        //Vector<Secteur> vSect = null;
         HttpSession session = request.getSession();
 
         AccesBase accesBase;
         //livreur
         LivreurDAO livreurDAO;
-        SecteurDAO secteurDAO;
+        //SecteurDAO secteurDAO;
         
         String chaineIdLivreur = request.getParameter("numeroLivreur");//Livreur
         
@@ -127,7 +127,7 @@ public class TraitementAccueil
             }
             catch (NumberFormatException e)
             {
-                jspRetour = "/jspAccueil.jsp";
+                jspRetour = "/jspModif.jsp";
                 session.setAttribute("message", e.getMessage());
                 session.setAttribute("idLivreur", chaineIdLivreur);//livreur
                 session.setAttribute("choixAction", "Modification");

@@ -27,10 +27,11 @@
                         <li><a href="jspCommande.jsp">Commandes</a></li>
                         <li><a href="jspLivreur.jsp">Livreurs</a></li>
 
-                        <li><a href="jspContact.jsp">Contact</a></li>
+                        
                         <li><a href="#">A propos</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="jspContact.jsp">Contact</a></li>
                         <li><a href="jspLogin.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul>
                 </div>

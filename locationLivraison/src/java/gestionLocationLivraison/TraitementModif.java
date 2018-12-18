@@ -62,12 +62,12 @@ public class TraitementModif
         vSect = (Vector<Secteur>) session.getAttribute("vSect");
 
         //cast d'integer en string
-        String stringIdLivreur = request.getParameter("idLvreur");
-        Integer idLivreur = null;
-        if (stringIdLivreur.compareTo("") == 0)
-        {
-            idLivreur = new Integer(stringIdLivreur);
-        }
+//        String stringIdLivreur = request.getParameter("idLivreur");
+//        Integer idLivreur = null;
+//        if (stringIdLivreur.compareTo("") == 0)
+//        {
+//            idLivreur = new Integer(stringIdLivreur);
+//        }
 
         String nomLivreur = request.getParameter("nomLivreur");
         nomLivreur = nomLivreur.trim();
@@ -139,7 +139,7 @@ public class TraitementModif
 // Modification de l'objet livreur
 // --------------------------------------------------------------------------
         
-        livreur.setIdLivreur(idLivreur);
+        //livreur.setIdLivreur(idLivreur);
         livreur.setNomLivreur(nomLivreur);
         livreur.setPrenomLivreur(prenomLivreur);
         livreur.setNumPermisLivreur(numeroSecteur);

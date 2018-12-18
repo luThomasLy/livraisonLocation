@@ -5,6 +5,7 @@
 %>
 
 <%@include file="jspHeader.jsp" %>
+<script src="livreur.js" type="text/javascript"></script>
 <link href="locliv.css" rel="stylesheet" type="text/css"/>
 
 <br>
@@ -66,7 +67,7 @@
                         <%
                             }
                         %>
-                        <label for="radio2"><a href="jspCreationLivreur.jsp">Création</label>
+                        <label for="radio2">Création</label>
 
                         <%  if (choixAction.compareTo("suppression") == 0) {
                         %>        
