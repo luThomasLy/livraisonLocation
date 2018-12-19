@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------------------- */
-/* Script specifique a l'ecran du accueil                                      */
+/* Script specifique a l'ecran jspModif                                      */
 /* -------------------------------------------------------------------------- */
 
 window.onload = initForm;

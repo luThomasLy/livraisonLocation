@@ -1,5 +1,7 @@
-
+<!--la jspHeader minimisé-->
 <%@include file="jspHeader.jsp" %>
+
+<!--lien css-->
 <link href="locliv.css" rel="stylesheet" type="text/css"/>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -13,8 +15,10 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
+            <!--l'image qui défile-->
             <img src="img/locliv-img3.jpeg" alt=""/>
             <div class="carousel-caption">
+                <!--le texte avec l'image-->
                 <h3>De la belle vaisselle pour tous vos évènements</h3>
                 <p>"Pour que ce moment reste unique"</p>
             </div>      
@@ -61,6 +65,6 @@
         </div>
     </div>
 </div><br>
-
+<!--la jspFooter minimisé-->
 <%@include file="jspFooter.jsp" %>
 

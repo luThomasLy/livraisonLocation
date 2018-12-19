@@ -1,10 +1,11 @@
-
+<!--les propriétés javascript-->
 <% String message = (String) session.getAttribute("message");
     String choixAction = (String) session.getAttribute("choixAction");
     String numeroLivreur = (String) session.getAttribute("numeroLivreur");
 %>
 
 <%@include file="jspHeader.jsp" %>
+<!--le script javascript du fichier livreur.js-->
 <script src="livreur.js" type="text/javascript"></script>
 <link href="locliv.css" rel="stylesheet" type="text/css"/>
 
@@ -13,12 +14,14 @@
 <br>
 <br>
 <br>
+<!--la mise en page de bootstrap v3 ligne et découpage en grid  de 12-->
 <div class="row">
     <div class="col-sm-4"></div>
     <div class="col-sm-8">
         <form action="ServletControleur?idEcran=1" method="post">
             <fieldset>
                 <legend>Gestion des livreurs</legend>
+                <!--toute la partie multichoix-->
                 <div class="divSaisieAccueil">
                     <div class="divTexte">
                         <label for="numeroLivreur">Numéro de livreur :</label>
@@ -128,7 +131,17 @@
     <br />
     <br />
     <br />
-    <p id=message><%=message%></p>
+
+    <!--<div class="alert alert-danger text-center" >
+        <strong><p id=message><%=message%></p></strong>
+    </div>-->
+    
+      <div class="alert alert-danger alert-dismissible fade in text-center">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong><p id=message><%=message%></p></strong> 
+  </div>
+    
+    
 </div>
 
 <br>

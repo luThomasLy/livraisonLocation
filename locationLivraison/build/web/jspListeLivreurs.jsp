@@ -20,26 +20,25 @@
     <p>Salariés de la société</p>
     <div/>            
     <table class="table">    
-        <thead>
-            <tr>
+        <tr>
+            <%
+                for (int i = 0; i < listeColonnes.size(); i++) {
+                    if (listeColonnes.elementAt(i).getLongueur() < 16) {
+            %>
+            <th class="petitTitreColonne">
                 <%
-                    for (int i = 0; i < listeColonnes.size(); i++) {
-                        if (listeColonnes.elementAt(i).getLongueur() < 16) {
+                } else {
                 %>
-                <th class="petitTitreColonne">
-                    <%
-                    } else {
-                    %>
-                <th>
-                    <%
-                        }
-                    %>
-                    <%=listeColonnes.elementAt(i).getNom()%>
-                </th>
+            <th>
                 <%
                     }
                 %>
-            </tr>
+                <%=listeColonnes.elementAt(i).getNom()%>
+            </th>
+            <%
+                }
+            %>
+        </tr>
         </thead>  
         <tbody>
             <%
@@ -100,7 +99,6 @@
     <br>
 
     <p id="pListe">
-        <!--<a href="ServletControleur?idEcran=2">Retour au menu principal</a>-->
         <a href="ServletControleur?idEcran=3">Retour au menu principal</a>
     </p>
 
